@@ -45,5 +45,5 @@ public class Main {
         c1.displayCoach();
         c2.displayCoach();
         c3.displayCoach();
-    }
+        System.out.println("UC1 Completed");}
 }
