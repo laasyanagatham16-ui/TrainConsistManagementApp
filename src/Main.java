@@ -1,15 +1,49 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+/*
+ * Train Consist Management App
+ *
+ * UC1: Basic Train Consist Setup
+ * This use case demonstrates the creation of train coaches
+ * and displaying their details.
+ */
+
+class Coach {
+    private String coachId;
+    private String coachType;
+
+    // Constructor
+    public Coach(String coachId, String coachType) {
+        this.coachId = coachId;
+        this.coachType = coachType;
+    }
+
+    // Getter methods
+    public String getCoachId() {
+        return coachId;
+    }
+
+    public String getCoachType() {
+        return coachType;
+    }
+
+    // Display method
+    public void displayCoach() {
+        System.out.println("Coach ID: " + coachId + ", Type: " + coachType);
+    }
+}
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
-    }
+        System.out.println("=== Train Consist Management System ===");
+
+        // Creating coaches
+        Coach c1 = new Coach("C1", "Sleeper");
+        Coach c2 = new Coach("C2", "AC");
+        Coach c3 = new Coach("C3", "General");
+
+        // Displaying coach details
+        c1.displayCoach();
+        c2.displayCoach();
+        c3.displayCoach();
+        System.out.println("UC1 Completed");}
 }
