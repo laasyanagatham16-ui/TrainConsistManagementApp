@@ -18,23 +18,14 @@ public class Main {
         List<Bogie> bogies = new ArrayList<>();
         bogies.add(new Bogie("Sleeper", 72));
         bogies.add(new Bogie("AC Chair", 60));
-        bogies.add(new Bogie("Sleeper", 72));
         bogies.add(new Bogie("First Class", 40));
-        bogies.add(new Bogie("AC Chair", 60));
 
-        // Group bogies by name (type)
-        Map<String, List<Bogie>> grouped =
-                bogies.stream()
-                        .collect(Collectors.groupingBy(b -> b.name));
+        // Calculate total capacity using Stream
+        int totalSeats = bogies.stream()
+                .map(b -> b.capacity)
+                .reduce(0, Integer::sum);
 
-        // Display grouped result
-        System.out.println("Grouped Bogies:");
-
-        for (String key : grouped.keySet()) {
-            System.out.println("\n" + key + ":");
-            for (Bogie b : grouped.get(key)) {
-                System.out.println("  Capacity: " + b.capacity);
-            }
-        }
+        // Display result
+        System.out.println("Total Seating Capacity: " + totalSeats);
     }
 }
