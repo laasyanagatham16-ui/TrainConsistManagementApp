@@ -3,44 +3,32 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
 
-        // Bogie IDs (can be unsorted)
-        String[] bogieIDs = {"BG309", "BG101", "BG550", "BG205", "BG412"};
-
-        // Step 1: Sort array (required for binary search)
-        Arrays.sort(bogieIDs);
+        // Bogie IDs (try empty {} to test exception)
+        String[] bogieIDs = {"BG101", "BG205", "BG309"};
 
         Scanner sc = new Scanner(System.in);
 
-        // Input search key
         System.out.print("Enter Bogie ID to search: ");
         String key = sc.nextLine();
 
-        int low = 0;
-        int high = bogieIDs.length - 1;
+        // 🔥 Fail-fast validation
+        if (bogieIDs.length == 0) {
+            throw new IllegalStateException("No bogies available for search!");
+        }
+
         boolean found = false;
 
-        // Binary Search
-        while (low <= high) {
-
-            int mid = (low + high) / 2;
-
-            int result = bogieIDs[mid].compareTo(key);
-
-            if (result == 0) {
+        // Linear Search
+        for (String id : bogieIDs) {
+            if (id.equals(key)) {
                 found = true;
                 break;
             }
-            else if (result < 0) {
-                low = mid + 1; // search right
-            }
-            else {
-                high = mid - 1; // search left
-            }
         }
 
-        // Output result
+        // Output
         if (found) {
-            System.out.println("Bogie found using Binary Search.");
+            System.out.println("Bogie found.");
         } else {
             System.out.println("Bogie not found.");
         }
