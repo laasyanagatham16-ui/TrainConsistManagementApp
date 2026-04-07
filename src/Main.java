@@ -1,38 +1,38 @@
 import java.util.*;
+import java.util.stream.*;
+
+class Bogie {
+    String name;
+    int capacity;
+
+    Bogie(String name, int capacity) {
+        this.name = name;
+        this.capacity = capacity;
+    }
+}
 
 public class Main {
     public static void main(String[] args) {
 
-        // Bogie IDs (try empty {} to test exception)
-        String[] bogieIDs = {"BG101", "BG205", "BG309"};
+        List<Bogie> bogies = new ArrayList<>();
 
-        Scanner sc = new Scanner(System.in);
+        bogies.add(new Bogie("Sleeper", 72));
+        bogies.add(new Bogie("AC Chair", 60));
+        bogies.add(new Bogie("Sleeper", 72));
+        bogies.add(new Bogie("First Class", 40));
+        bogies.add(new Bogie("AC Chair", 60));
 
-        System.out.print("Enter Bogie ID to search: ");
-        String key = sc.nextLine();
+        // Grouping
+        Map<String, List<Bogie>> grouped =
+                bogies.stream()
+                        .collect(Collectors.groupingBy(b -> b.name));
 
-        // 🔥 Fail-fast validation
-        if (bogieIDs.length == 0) {
-            throw new IllegalStateException("No bogies available for search!");
-        }
-
-        boolean found = false;
-
-        // Linear Search
-        for (String id : bogieIDs) {
-            if (id.equals(key)) {
-                found = true;
-                break;
+        // Display
+        for (String type : grouped.keySet()) {
+            System.out.println(type + ":");
+            for (Bogie b : grouped.get(type)) {
+                System.out.println("  " + b.capacity);
             }
         }
-
-        // Output
-        if (found) {
-            System.out.println("Bogie found.");
-        } else {
-            System.out.println("Bogie not found.");
-        }
-
-        sc.close();
     }
 }
