@@ -3,20 +3,27 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
 
-        // Create HashSet for bogie IDs
-        HashSet<String> bogieIDs = new HashSet<>();
+        // Create LinkedList for train consist
+        LinkedList<String> train = new LinkedList<>();
 
-        // Adding bogie IDs (including duplicates)
-        bogieIDs.add("BG101");
-        bogieIDs.add("BG102");
-        bogieIDs.add("BG103");
-        bogieIDs.add("BG101"); // duplicate
-        bogieIDs.add("BG102"); // duplicate
+        // Add bogies
+        train.add("Engine");
+        train.add("Sleeper");
+        train.add("AC");
+        train.add("Cargo");
+        train.add("Guard");
 
-        // Display unique bogie IDs
-        System.out.println("Unique Bogie IDs in Train:");
-        for (String id : bogieIDs) {
-            System.out.println(id);
+        // Insert Pantry Car at position 2 (index starts from 0)
+        train.add(2, "Pantry Car");
+
+        // Remove first and last bogie
+        train.removeFirst();
+        train.removeLast();
+
+        // Display final train consist
+        System.out.println("Final Train Consist:");
+        for (String bogie : train) {
+            System.out.println(bogie);
         }
     }
 }
