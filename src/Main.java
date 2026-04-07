@@ -3,25 +3,20 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
 
-        // Create LinkedList for train consist
-        LinkedList<String> train = new LinkedList<>();
+        // Create LinkedHashSet for train formation
+        LinkedHashSet<String> train = new LinkedHashSet<>();
 
         // Add bogies
         train.add("Engine");
         train.add("Sleeper");
-        train.add("AC");
         train.add("Cargo");
         train.add("Guard");
 
-        // Insert Pantry Car at position 2 (index starts from 0)
-        train.add(2, "Pantry Car");
+        // محاولة duplicate (intentional duplicate)
+        train.add("Sleeper"); // will be ignored
 
-        // Remove first and last bogie
-        train.removeFirst();
-        train.removeLast();
-
-        // Display final train consist
-        System.out.println("Final Train Consist:");
+        // Display final train formation
+        System.out.println("Final Train Formation:");
         for (String bogie : train) {
             System.out.println(bogie);
         }
