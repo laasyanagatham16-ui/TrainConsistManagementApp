@@ -1,49 +1,30 @@
 /*
  * Train Consist Management App
  *
- * UC1: Basic Train Consist Setup
- * This use case demonstrates the creation of train coaches
- * and displaying their details.
+ * UC1: Initialize Train and Display Consist Summary
+ * This use case initializes an empty train consist
+ * and displays its initial state.
  */
 
-class Coach {
-    private String coachId;
-    private String coachType;
-
-    // Constructor
-    public Coach(String coachId, String coachType) {
-        this.coachId = coachId;
-        this.coachType = coachType;
-    }
-
-    // Getter methods
-    public String getCoachId() {
-        return coachId;
-    }
-
-    public String getCoachType() {
-        return coachType;
-    }
-
-    // Display method
-    public void displayCoach() {
-        System.out.println("Coach ID: " + coachId + ", Type: " + coachType);
-    }
-}
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
+
     public static void main(String[] args) {
 
-        System.out.println("=== Train Consist Management System ===");
+        // Welcome Message
+        System.out.println("=== Train Consist Management App ===");
 
-        // Creating coaches
-        Coach c1 = new Coach("C1", "Sleeper");
-        Coach c2 = new Coach("C2", "AC");
-        Coach c3 = new Coach("C3", "General");
+        // Initialize Train Consist (Dynamic List)
+        List<String> trainConsist = new ArrayList<>();
 
-        // Displaying coach details
-        c1.displayCoach();
-        c2.displayCoach();
-        c3.displayCoach();
-        System.out.println("UC1 Completed");}
+        // Display Initial State
+        System.out.println("Train consist initialized successfully.");
+
+        // Display Initial Bogie Count
+        System.out.println("Initial number of bogies: " + trainConsist.size());
+
+        System.out.println("System is ready for further operations...");
+    }
 }
